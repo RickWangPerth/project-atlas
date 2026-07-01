@@ -10,8 +10,8 @@ Establish the repository baseline.
 Acceptance criteria:
 
 - README explains the vision, MVP scope, and repository layout.
-- Architecture documentation defines extractor, model, generator, and
-  enrichment boundaries.
+- Architecture documentation defines extractor, model, generator, and enrichment
+  boundaries.
 - Roadmap lists the MVP work in implementation order.
 - Development guidance describes expected tests and quality checks.
 - Turtle is documented as an example only.
@@ -34,8 +34,8 @@ Define the stable Atlas metadata contract.
 
 Acceptance criteria:
 
-- Model represents database, schema, table, column, key, index, and
-  relationship concepts.
+- Model represents database, schema, table, column, key, index, and relationship
+  concepts.
 - Model can be validated from fixture data.
 - Model serialization is deterministic.
 - No Turtle-specific fields are present in the core model.
@@ -84,3 +84,53 @@ Acceptance criteria:
 - Example generated Markdown lives under `examples/turtle/dictionary`.
 - Example generated diagrams live under `examples/turtle/diagrams`.
 - No Turtle-specific logic is added to core Atlas modules.
+
+## ATLAS-008 Knowledge Candidate schema
+
+Define the pre-governance handoff contract between Athena and Atlas.
+
+Acceptance criteria:
+
+- Schema supports candidate id, type, title, claim, source, evidence,
+  confidence, lifecycle state, destination, and reviewer notes.
+- Schema supports static compilation candidates and living harvest candidates.
+- Schema is serializable and deterministic.
+- Candidate records are not treated as approved Knowledge Pack content.
+
+## ATLAS-009 Knowledge Candidate Review workflow
+
+Define and implement the first review workflow.
+
+Acceptance criteria:
+
+- Review outcomes include approve, reject, request-repair, needs-more-evidence,
+  duplicate, and stale.
+- Review records preserve reviewer, timestamp, rationale, candidate version or
+  hash, and linked evidence.
+- Approved candidates can be selected for Knowledge Pack assembly.
+- Rejected candidates remain in the audit trail.
+
+## ATLAS-010 Harvest Review Workflow
+
+Support review of candidates produced by Knowledge Harvest skills.
+
+Acceptance criteria:
+
+- Review flow supports lessons, decisions, patterns, caveats, workflow notes, and
+  repair notes.
+- `/decision` candidates can be routed into ADR candidate review.
+- Reviewers can mark harvested knowledge as uncertain without discarding it.
+- Atlas preserves source event context where available.
+
+## ATLAS-011 Continuous Knowledge Governance
+
+Design the continuous loop from runtime feedback back into candidate review.
+
+Acceptance criteria:
+
+- Documentation describes the loop from Knowledge Pack use to feedback, bug,
+  lesson, decision, or new candidate.
+- Governance states include captured, candidate, reviewed, approved, published,
+  deprecated, and retired.
+- Stale knowledge and conflict handling are explicitly documented.
+- No runtime feedback is published directly without review.
